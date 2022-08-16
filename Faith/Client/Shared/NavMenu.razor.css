@@ -17,6 +17,11 @@
     vertical-align: text-top;
     top: -2px;
 }
+.loginButton{
+    position:absolute;
+    margin-top: 100%;
+    bottom: 0;
+}
 
 .nav-item {
     font-size: 0.9rem;
