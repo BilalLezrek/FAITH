@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Server\\Faith.Server.csproj": {}
+    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Server\\Faith.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Client\\Faith.Client.csproj": {
+    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Client\\Faith.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Client\\Faith.Client.csproj",
+        "projectUniqueName": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Client\\Faith.Client.csproj",
         "projectName": "Faith.Client",
-        "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Client\\Faith.Client.csproj",
+        "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Client\\Faith.Client.csproj",
         "packagesPath": "C:\\Users\\bilal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Client\\obj\\",
+        "outputPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj": {
-                "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj"
+              "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj": {
+                "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj"
               }
             }
           }
@@ -52,10 +52,22 @@
               "target": "Package",
               "version": "[6.0.1, )"
             },
+            "Microsoft.AspNetCore.Components.WebAssembly.Authentication": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[6.0.14, )"
             }
           },
           "imports": [
@@ -88,14 +100,14 @@
         }
       }
     },
-    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Server\\Faith.Server.csproj": {
+    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Server\\Faith.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Server\\Faith.Server.csproj",
+        "projectUniqueName": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Server\\Faith.Server.csproj",
         "projectName": "Faith.Server",
-        "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Server\\Faith.Server.csproj",
+        "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Server\\Faith.Server.csproj",
         "packagesPath": "C:\\Users\\bilal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Server\\obj\\",
+        "outputPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -116,11 +128,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Client\\Faith.Client.csproj": {
-                "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Client\\Faith.Client.csproj"
+              "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Client\\Faith.Client.csproj": {
+                "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Client\\Faith.Client.csproj"
               },
-              "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj": {
-                "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj"
+              "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj": {
+                "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj"
               }
             }
           }
@@ -135,6 +147,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly.Server": {
               "target": "Package",
               "version": "[6.0.1, )"
@@ -162,14 +178,14 @@
         }
       }
     },
-    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj": {
+    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj",
         "projectName": "Faith.Shared",
-        "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj",
+        "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj",
         "packagesPath": "C:\\Users\\bilal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

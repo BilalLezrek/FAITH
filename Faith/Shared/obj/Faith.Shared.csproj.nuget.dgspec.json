@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj": {}
+    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj": {
+    "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj",
         "projectName": "Faith.Shared",
-        "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\Faith.Shared.csproj",
+        "projectPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\Faith.Shared.csproj",
         "packagesPath": "C:\\Users\\bilal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\projecten\\Faith\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\bilal\\OneDrive\\Bureaublad\\Projecten\\Faith\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Faith.Shared;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Faith.Server.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize] 
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -20,13 +22,10 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<WeatherForecast> Get()
+    public IEnumerable<Gebruiker> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        return Enumerable.Range(1, 5).Select(index => new Gebruiker
         {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
     }
