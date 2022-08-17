@@ -6,11 +6,13 @@
 <MudSnackbarProvider/>
 
 <MudLayout>
-    <MudAppBar>
+    <MudAppBar Style="background-color:#082028">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         FAITH
+        <MudSpacer/>
+        <AccessControl/>
     </MudAppBar>
-    <MudDrawer @bind-Open="@_drawerOpen">
+    <MudDrawer Style="background-color:#082028;color:white;" @bind-Open="@_drawerOpen">
         <NavMenu/>
     </MudDrawer>
     <MudMainContent>

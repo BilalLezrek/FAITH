@@ -1,0 +1,34 @@
+﻿@page "/leefgroep"
+@using Faith.Shared
+@inject HttpClient Http
+@inject Microsoft.AspNetCore.Components.NavigationManager UriHelper
+@attribute [Authorize]
+<PageTitle>Uw leefgroep</PageTitle>
+
+<MudTable Items="@gebruikers" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info" Style="background-color:#082028; color:white;">
+    <HeaderContent>
+        <MudTh>nr.</MudTh>
+        <MudTh>Voornaam</MudTh>
+        <MudTh>Achternaam</MudTh>
+        <MudTh>Geboortedatum</MudTh>
+        <MudTh>Rol</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nr">1</MudTd>
+        <MudTd DataLabel="Voornaam">@context.Voornaam</MudTd>
+        <MudTd DataLabel="Achternaam">@context.Achternaam</MudTd>
+        <MudTd DataLabel="Geboortedatum" HideSmall="_hidePosition">@context.Geboortedatum</MudTd>
+        <MudTd DataLabel="Rol">@context.Rol</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code { 
+    private bool _hidePosition;
+    private bool _loading;
+    private IEnumerable<Gebruiker> gebruikers= new List<Gebruiker> {
+        new Gebruiker { Voornaam = "Jaguar XJ220", Achternaam="test", Geboortedatum = new DateTime(), Rol= Rol.Jongere },
+        new Gebruiker { Voornaam = "Jaguar XJ220", Achternaam="test", Geboortedatum = new DateTime(), Rol= Rol.Jongere },
+        new Gebruiker { Voornaam = "Jaguar XJ220", Achternaam="test", Geboortedatum = new DateTime(), Rol= Rol.Jongere },
+        new Gebruiker { Voornaam = "Jaguar XJ220", Achternaam="test", Geboortedatum = new DateTime(), Rol= Rol.Jongere }
+    };
+}
