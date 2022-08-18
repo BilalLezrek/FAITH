@@ -2,8 +2,22 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<AuthorizeView Roles="Begeleider">
+        <Authorized>
+            <MudPaper Class="pa-16 ma-2" Style="background-color: #082028; color:white;" Elevation="3">
+            @if (@context.User.Claims.Any( x => x.Value == "given_name"))
+            {
+                <MudText Typo="Typo.h2">Welkom @context.User.Claims.Any( x => x.Value == "given_name")!</MudText>
+            }else{
+                <MudText Typo="Typo.h2">Welkom!</MudText>
+            }
+            <MudDivider style="margin-bottom:5%" DividerType="DividerType.Middle"/>
+            <MudText Align="Align.Center">U bent een begeleider. U kunt links navigeren naar uw tijdlijn om naar de posts van uw jongeren te gaan. Daaronder vind u een optie om naar uw groep van jongeren te gaan waar u er meer aan kan toevoegen (max 10) en eruithalen.</MudText>
+            </MudPaper>
+        </Authorized>
+    <NotAuthorized>
+        Gelieve in te loggen. <a href="authentication/login">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
