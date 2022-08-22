@@ -1,17 +1,79 @@
 ﻿@page "/Tijdlijn"
-@using Faith.Shared
+@using Domain.Posts;
+@using Domain.Gebruikers;
+
 
 <PageTitle>Tijdlijn</PageTitle>
 
-<MudText Typo="Typo.h2">Tijdlijn!</MudText>
 
-@foreach{
+<MudPaper Class="px-2 m-1" Style="background-color:#082028;" Elevation="3"><MudText Style="color: white;" Typo="Typo.h2" Align="Align.Center">Tijdlijn</MudText></MudPaper>
+
+@*<MudOverlay Visible="isVisible" DarkBackground="true">
+<MudGrid>
+    <MudItem xs="12" sm="7">
+        <MudPaper Class="pa-4">
+            <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+                    <MudTextField T="string" Label="Voornaam" Required="true" RequiredError="Use is required!"/>
+                    <MudTextField T="string" Label="Achternaam" Required="true" RequiredError="Use is required!"/>
+                    <MudTextField T="string" Label="Email" Required="true" RequiredError="Email is required!"
+                                  Validation="@(new EmailAddressAttribute() {ErrorMessage = "The email address is invalid"})"/>
+                    <MudTextField T="string" Label="Password" HelperText="Choose a strong password" @ref="pwField1"
+                                  InputType="InputType.Password"
+                                  Validation="@(new Func<string, IEnumerable<string>>(PasswordStrength))" Required="true"
+                                  RequiredError="Password is required!"/>
+            </MudForm>   
+        </MudPaper>
+        <MudPaper Class="pa-4 mt-4">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!success)" Class="ml-auto">React</MudButton>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+</MudOverlay>*@
+
+@foreach (var post in posts){
+    <MudCard Style="background-color:#082028; color:white">
+@if (post.PhotoUrl != String.Empty)
+{
+    <MudCardMedia Image="@post.PhotoUrl" Height="200" />
+}
+    <MudCardContent>
+        <MudText Typo="Typo.h5">@post.Onderwerp</MudText>
+        <MudText Typo="Typo.body2">@post.Tekst</MudText>
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="react">React</MudButton>
+    </MudCardActions>
+    </MudCard>
     
+<MudDivider DividerType="DividerType.Middle" Class="my-2"/>
 }
 
 
 @code {
+    bool success;
+    string[] errors = { };
+    MudTextField<string> pwField1;
+    MudForm form;
+    private bool isVisible;
+    private bool _hidePosition;
+    private bool _loading;
 
-    List<Posts> posts = new List<Posts>
 
+    //private IEnumerable<Post> posts = getIndexAsync();
+        private IEnumerable<Post> posts = new List<Post> {
+        new Post ("test","onderwerp", new Jongere("naam","Ander","mail",new DateTime(),"man"),"Geslacht"),
+        new Post ("test","onderwerp", new Jongere("naam","Ander","mail",new DateTime(),"man"),String.Empty),
+        new Post ("test","onderwerp", new Jongere("naam","Ander","mail",new DateTime(),"man"),"Geslacht"),
+        new Post ("test","onderwerp", new Jongere("naam","Ander","mail",new DateTime(),"man"),"Geslacht"),
+    }; 
+
+    void react()
+    {
+        
+    }
+    
+    public void ToggleOverlay(bool value)
+    {
+        isVisible = value;
+    }
 }

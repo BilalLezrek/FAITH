@@ -1,13 +1,14 @@
 ﻿@page "/leefgroep"
-@using Faith.Shared
+@using Domain.Gebruikers
 @using System.Text.RegularExpressions
 @using System.ComponentModel.DataAnnotations
+@using global::Client.Users
 @inject HttpClient Http
 @inject Microsoft.AspNetCore.Components.NavigationManager UriHelper
 @attribute [Authorize]
 <PageTitle>Uw leefgroep</PageTitle>
 
-<MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="@(e => ToggleOverlay(true))">Voeg een jongere toe</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Secondary" Style="background-color:#082028;" Class="m-1" OnClick="@(e => ToggleOverlay(true))">Voeg een jongere toe</MudButton>
 
     <MudOverlay Visible="isVisible" DarkBackground="true">
         <MudGrid>
@@ -33,7 +34,7 @@
             </MudForm>   
         </MudPaper>
         <MudPaper Class="pa-4 mt-4">
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!success)" Class="ml-auto">Register</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!success)" Class="ml-auto">Registreer</MudButton>
             <MudButton Variant="Variant.Filled" Color="Color.Secondary" DisableElevation="true" OnClick="@(()=>form.Reset())" Class="mx-2">Reset</MudButton>
             <MudButton Variant="Variant.Filled" Color="Color.Primary"  OnClick="@(e => ToggleOverlay(false))" Class="mt-1">Annuleren</MudButton>
         </MudPaper>
@@ -50,7 +51,7 @@
 </MudGrid>
 </MudOverlay>
 
-<MudTable Items="@gebruikers" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+<MudTable Items="@jongeren" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>
         <MudTh>nr.</MudTh>
         <MudTh>Voornaam</MudTh>
@@ -64,7 +65,7 @@
         <MudTd DataLabel="Achternaam">@context.Achternaam</MudTd>
         <MudTd DataLabel="Geboortedatum">@context.Geboortedatum</MudTd>
         <MudTd DataLabel="Geslacht">@context.Geslacht</MudTd>
-        <MudFab @onclick="@(()=>Delete(1))" Color="Color.Secondary" Icon="@Icons.Material.Filled.Delete" Size="Size.Small" IconSize="Size.Small" />
+        <MudFab @onclick="@(()=>Delete(1))" Color="Color.Secondary" Icon="@Icons.Material.Filled.Delete" Size="Size.Small" Style="background-color:#082028;" IconSize="Size.Small" />
     </RowTemplate>
 </MudTable>
 @code {
@@ -75,11 +76,12 @@
     private bool isVisible;
     private bool _hidePosition;
     private bool _loading;
-    private IEnumerable<Gebruiker> gebruikers= new List<Gebruiker> {
-        new Gebruiker { Voornaam = "Jaguar XJ220", Achternaam="test", Geboortedatum = new DateTime(), Rol= Rol.Jongere },
-        new Gebruiker { Voornaam = "Jaguar XJ220", Achternaam="test", Geboortedatum = new DateTime(), Rol= Rol.Jongere },
-        new Gebruiker { Voornaam = "Jaguar XJ220", Achternaam="test", Geboortedatum = new DateTime(), Rol= Rol.Jongere },
-        new Gebruiker { Voornaam = "Jaguar XJ220", Achternaam="test", Geboortedatum = new DateTime(), Rol= Rol.Jongere }
+   // GebruikerService jongerenApi;
+    //private List<Jongere> jongeren = jongerenApi.GetIndexAsync();
+    private List<Jongere> jongeren= new List<Jongere> {
+        new Jongere("naam","EMAIL","achternaam", new DateTime(),null),
+        new Jongere("naam","EMAIL","achternaam", new DateTime(),null),
+        new Jongere("naam","EMAIL","achternaam", new DateTime(),null),
     };
     public void ToggleOverlay(bool value)
     {
