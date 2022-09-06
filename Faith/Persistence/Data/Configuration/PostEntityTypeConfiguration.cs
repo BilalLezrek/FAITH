@@ -16,8 +16,10 @@ namespace Persistence.Data.Configuration
             builder.Property(p => p.Onderwerp).IsRequired();
             builder.Property(p => p.Tekst).IsRequired();
             builder.Property(p => p.Datum).IsRequired();
-            builder.HasOne(p => p.PhotoUrl);
-            builder.HasOne(p => p.Gebruiker);
+            builder.Property(p => p.Archief).IsRequired();
+            builder.Property(p => p.Url);
+            builder.Property(p => p.Gebruiker);
+            
         }
     }
 }

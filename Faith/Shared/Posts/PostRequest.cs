@@ -17,6 +17,7 @@ namespace Shared.Posts
             public string Tekst { get; set; }
             public DateTime Datum { get; set; }
             public Gebruiker Gebruiker { get; set; }
+            public bool archief { get; set; }
             public string? Url { get; set; }
         }
 
@@ -29,15 +30,14 @@ namespace Shared.Posts
         {
             public int PostId { get; set; }
         }
-
-        public class Create
-        {
-            public PostDto.Mutate Post { get; set; }
-        }
-
         public class Edit
         {
             public int PostId { get; set; }
+            public PostDto.Mutate Post { get; set; }
+        }
+
+        public class Create
+        {
             public PostDto.Mutate Post { get; set; }
         }
     }

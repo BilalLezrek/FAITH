@@ -1,7 +1,4 @@
 ﻿@page "/Tijdlijn"
-@using Domain.Posts;
-@using Domain.Gebruikers;
-
 
 <PageTitle>Tijdlijn</PageTitle>
 
@@ -29,12 +26,13 @@
     </MudItem>
 </MudGrid>
 </MudOverlay>*@
-
-@foreach (var post in posts){
-    <MudCard Style="background-color:#082028; color:white">
-@if (post.PhotoUrl != String.Empty)
+@if (posts is not null)
 {
-    <MudCardMedia Image="@post.PhotoUrl" Height="200" />
+ @foreach (var post in posts){
+    <MudCard Style="background-color:#082028; color:white">
+@if (post.Url != String.Empty)
+{
+    <MudCardMedia Image="@post.Url" Height="200" />
 }
     <MudCardContent>
         <MudText Typo="Typo.h5">@post.Onderwerp</MudText>
@@ -45,35 +43,15 @@
     </MudCardActions>
     </MudCard>
     
-<MudDivider DividerType="DividerType.Middle" Class="my-2"/>
+        <MudDivider DividerType="DividerType.Middle" Class="my-2"/>
+    }
+
+}
+else
+{
+    <p>LEEG</p>
 }
 
 
-@code {
-    bool success;
-    string[] errors = { };
-    MudTextField<string> pwField1;
-    MudForm form;
-    private bool isVisible;
-    private bool _hidePosition;
-    private bool _loading;
 
 
-    //private IEnumerable<Post> posts = getIndexAsync();
-        private IEnumerable<Post> posts = new List<Post> {
-        new Post ("test","onderwerp", new Jongere("naam","Ander","mail",new DateTime(),"man"),"Geslacht"),
-        new Post ("test","onderwerp", new Jongere("naam","Ander","mail",new DateTime(),"man"),String.Empty),
-        new Post ("test","onderwerp", new Jongere("naam","Ander","mail",new DateTime(),"man"),"Geslacht"),
-        new Post ("test","onderwerp", new Jongere("naam","Ander","mail",new DateTime(),"man"),"Geslacht"),
-    }; 
-
-    void react()
-    {
-        
-    }
-    
-    public void ToggleOverlay(bool value)
-    {
-        isVisible = value;
-    }
-}

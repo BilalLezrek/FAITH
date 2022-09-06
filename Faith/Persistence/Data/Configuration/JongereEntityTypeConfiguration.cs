@@ -13,11 +13,15 @@ namespace Persistence.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Jongere> builder)
         {
-            builder.Property(p => p.Achternaam).IsRequired();
+            
             builder.Property(p => p.Voornaam).IsRequired();
-            builder.Property(p => p.Geboortedatum);
-            builder.Property(p => p.Geslacht).IsRequired();
-            builder.HasMany(p => p.Posts);
+            builder.Property(p => p.Achternaam).IsRequired();
+            builder.Property(p => p.Email).IsRequired();
+            builder.Property(p => p.Geboortedatum).IsRequired();
+            builder.Property(p => p.Geslacht);
+
+            builder.Property(p => p.Begeleider);
+            builder.HasMany(p => p.Posts).WithOne();
         }
     }
 }

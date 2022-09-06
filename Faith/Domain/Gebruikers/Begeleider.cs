@@ -22,15 +22,23 @@ namespace Domain.Gebruikers
             Geslacht = geslacht;
             Reacties = new List<Reactie>();
         }
-        public Reactie PlaatsReactie(string tekst, Gebruiker gebruiker,Post post)
+        public Reactie PlaatsReactie(string tekst,int post)
         {
-            var reactie = new Reactie(tekst, this, post);
+            var reactie = new Reactie(tekst,this.Id,post);
             Reacties.Add(reactie);
             return reactie;
+        }
+        public void ArchiveerPost(Post post)
+        {
+            post.Archief = true;
         }
         public void VoegJongereToe(Jongere jongere)
         {
             Leefgroep.Add(jongere);
+        }
+        public void VerwijderJogere(Jongere jongere)
+        {
+            Leefgroep.Remove(jongere);
         }
     }
 }

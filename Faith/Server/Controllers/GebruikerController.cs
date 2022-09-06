@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Auth0.ManagementApi;
+using Auth0.ManagementApi.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Begeleider;
 using Shared.Jongere;
 
@@ -6,40 +9,28 @@ using Shared.Jongere;
 
 namespace Faith.Server.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Authorize(Roles = "Begeleider")]
     public class GebruikerController : ControllerBase
     {
-        private readonly IBegeleiderService begeleiderService;
-        private readonly IJongereService jongereService;
+        private readonly ManagementApiClient _managementApiClient;
 
-        public GebruikerController(IBegeleiderService begeleiderService,IJongereService jongereService)
+        public GebruikerController(ManagementApiClient managementApiClient)
         {
-            this.begeleiderService = begeleiderService;
-            this.jongereService = jongereService;
+            _managementApiClient = managementApiClient;
         }
 
         [HttpGet]
-        public Task<BegeleiderResponse.GetIndex> GetBegeleiderIndexAsync([FromQuery] BegeleiderRequest.GetIndex request)
+        public async Task<IEnumerable<JongereDto.Index>> GetUsers()
         {
-            return begeleiderService.GetIndexAsync(request);
-        }
-
-        [HttpPost]
-        public Task<BegeleiderResponse.Create> CreateBegeleiderAsync([FromBody] BegeleiderRequest.Create request)
-        {
-            return begeleiderService.CreateAsync(request);
-        }
-        [HttpGet]
-        public Task<JongereResponse.GetIndex> GetJongereIndexAsync([FromQuery] JongereRequest.GetIndex request)
-        {
-            return jongereService.GetIndexAsync(request);
-        }
-
-        [HttpPost]
-        public Task<JongereResponse.Create> CreateJongereAsync([FromBody] JongereRequest.Create request)
-        {
-            return jongereService.CreateAsync(request);
+            var users = await _managementApiClient.Users.GetAllAsync(new GetUsersRequest());
+            return users.Select(x => new JongereDto.Index
+            {
+                Email = x.Email,
+                Voornaam = x.FirstName,
+                Achternaam = x.LastName,
+            });
         }
     }
 }

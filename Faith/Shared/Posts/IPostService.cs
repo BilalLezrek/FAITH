@@ -8,7 +8,7 @@ namespace Shared.Posts
 {
     public interface IPostService
     {
-        Task<PostResponse.GetIndex> GetIndexAsync(PostRequest.GetIndex request);
+        Task<PostResponse.GetIndex> GetIndexAsync(int request);
         Task DeleteAsync(PostRequest.Delete request);
         Task<PostResponse.Create> CreateAsync(PostRequest.Create request);
         Task<PostResponse.Edit> EditAsync(PostRequest.Edit request);

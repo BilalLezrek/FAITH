@@ -4,10 +4,6 @@
     {
         public class GetIndex
         {
-            public object GetQueryString()
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public class Create

@@ -1,19 +1,23 @@
+using Ardalis.GuardClauses;
+using Domain.Common;
 using Domain.Gebruikers;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Posts;
 
-public abstract class PostType
+public abstract class PostType : Entity
 {
-    public int Id { get; init; }
-    public Gebruiker Gebruiker { get; set; }
+    [ForeignKey("begeleider")]
+    public int Gebruiker { get; set; }
+
     public string Tekst { get; set; }
+
     public DateTime Datum { get; set; }
 
-    public PostType(Gebruiker gebruiker, string tekst)
+    public PostType( string tekst, int gebruiker)
     {
-        Gebruiker = gebruiker;
-        Tekst = tekst;
+        Tekst = Guard.Against.Null(tekst, nameof(tekst)); ;
         Datum = DateTime.Now;
-
+        Gebruiker = Guard.Against.Null(gebruiker, nameof(gebruiker));
     }
 }

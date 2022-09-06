@@ -14,8 +14,8 @@ namespace Shared.Reactie
         {
             public int ReactieId { get; set; }
             public string Tekst { get; set; }
-            public Gebruiker? Gebruiker { get; set; }
-            public Post post { get; set; }
+            public int? Gebruiker { get; set; }
+            public int post { get; set; }
             
         }
 
@@ -25,8 +25,8 @@ namespace Shared.Reactie
             public int ReactieId { get; set; }
             public string Tekst { get; set; }
             public DateTime Datum { get; set; }
-            public Gebruiker? Gebruiker { get; set; }
-            public Post post { get; set; }
+            public int? Gebruiker { get; set; }
+            public int post { get; set; }
             public string? Url { get; set; }
         }
 

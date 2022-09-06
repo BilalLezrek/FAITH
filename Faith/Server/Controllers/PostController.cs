@@ -6,45 +6,35 @@ using Shared.Posts;
 
 namespace Faith.Server.Controllers;
 
-[ApiController]
-[Route("[controller]")]
-[Authorize] 
+[Route("api/[controller]")]
 public class PostController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class GebruikerController : ControllerBase
-    {
         private readonly IReactieService ReactieService;
         private readonly IPostService PostService;
 
-        public GebruikerController(IReactieService ReactieService, IPostService PostService)
+        public PostController(IReactieService ReactieService, IPostService PostService)
         {
             this.ReactieService = ReactieService;
             this.PostService = PostService;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public Task<ReactieResponse.GetIndex> GetReactieIndexAsync([FromQuery] ReactieRequest.GetIndex request)
         {
             return ReactieService.GetIndexAsync(request);
-        }
+        }*/
 
         [HttpPost]
         public Task<ReactieResponse.Create> CreateReactieAsync([FromBody] ReactieRequest.Create request)
         {
             return ReactieService.CreateAsync(request);
         }
-        [HttpGet]
-        public Task<PostResponse.GetIndex> GetPostIndexAsync([FromQuery] PostRequest.GetIndex request)
+        [HttpGet("{begeleiderId}")]
+        public Task<PostResponse.GetIndex> GetPostIndexAsync(int begeleiderId)
         {
-            return PostService.GetIndexAsync(request);
-        }
-
-        [HttpPost]
-        public Task<PostResponse.Create> CreatePostAsync([FromBody] PostRequest.Create request)
-        {
-            return PostService.CreateAsync(request);
+        Console.WriteLine("ping in erver");
+        var posts = PostService.GetIndexAsync(begeleiderId);
+        Console.WriteLine(posts);
+        return posts;
         }
     }
-}

@@ -16,18 +16,16 @@ namespace Shared.Reactie
                 public int Id { get; set; }
                 public string Tekst { get; set; }
                 public DateTime Datum { get; set; }
-                public Gebruiker Gebruiker { get; set; }
-                public Post post { get; set; }
-                public string? Url { get; set; }
+                public int Gebruiker { get; set; }
+                public int Post { get; set; }
             }
             
             public class Mutate
             {
                 public string Tekst { get; set; }
                 public DateTime Datum { get; set; }
-                public Gebruiker Gebruiker { get; set; }
-                public Post Post { get; set; }
-                public string? Url { get; set; }
+                public int Gebruiker { get; set; }
+                public int Post { get; set; }
             }
 
                 public class Validator : AbstractValidator<Mutate>
@@ -38,7 +36,6 @@ namespace Shared.Reactie
                         RuleFor(x => x.Datum).NotEmpty();
                         RuleFor(x => x.Gebruiker).NotEmpty();
                         RuleFor(x => x.Post).NotEmpty();
-                        RuleFor(x => x.Url);
                     }
                 }
             }

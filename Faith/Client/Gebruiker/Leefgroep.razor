@@ -2,10 +2,11 @@
 @using Domain.Gebruikers
 @using System.Text.RegularExpressions
 @using System.ComponentModel.DataAnnotations
-@using global::Client.Users
+@using Microsoft.AspNetCore.Authorization
 @inject HttpClient Http
 @inject Microsoft.AspNetCore.Components.NavigationManager UriHelper
 @attribute [Authorize]
+
 <PageTitle>Uw leefgroep</PageTitle>
 
 <MudButton Variant="Variant.Filled" Color="Color.Secondary" Style="background-color:#082028;" Class="m-1" OnClick="@(e => ToggleOverlay(true))">Voeg een jongere toe</MudButton>
@@ -76,13 +77,9 @@
     private bool isVisible;
     private bool _hidePosition;
     private bool _loading;
-   // GebruikerService jongerenApi;
+    // GebruikerService jongerenApi;
     //private List<Jongere> jongeren = jongerenApi.GetIndexAsync();
-    private List<Jongere> jongeren= new List<Jongere> {
-        new Jongere("naam","EMAIL","achternaam", new DateTime(),null),
-        new Jongere("naam","EMAIL","achternaam", new DateTime(),null),
-        new Jongere("naam","EMAIL","achternaam", new DateTime(),null),
-    };
+    private List<Jongere> jongeren = new List<Jongere>();
     public void ToggleOverlay(bool value)
     {
         isVisible = value;

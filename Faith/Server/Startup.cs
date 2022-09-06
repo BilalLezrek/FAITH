@@ -32,7 +32,7 @@ namespace Server
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var builder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("FAith"));
+            var builder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("FAITH"));
             services.AddDbContext<FaithDbContext>(options =>
                 options.UseSqlServer(builder.ConnectionString)
                     .EnableSensitiveDataLogging(Configuration.GetValue<bool>("Logging:EnableSqlParameterLogging")));
@@ -45,7 +45,7 @@ namespace Server
             services.AddSwaggerGen(c =>
             {
                 c.CustomSchemaIds(x => $"{x.DeclaringType.Name}.{x.Name}");
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sportstore API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FAITH API", Version = "v1" });
             });
 
             services.AddAuthentication(options =>
@@ -85,7 +85,7 @@ namespace Server
                 app.UseDeveloperExceptionPage();
                 app.UseWebAssemblyDebugging();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sportstore API"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FAITH API"));
             }
             else
             {

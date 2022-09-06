@@ -16,8 +16,8 @@ namespace Persistence.Data.Configuration
         {
             builder.Property(p => p.Tekst).IsRequired();
             builder.Property(p => p.Datum).IsRequired();
-            builder.HasOne(p => p.Post);
-            builder.HasOne(p => p.Gebruiker);
+            builder.Property(p => p.Gebruiker);
+            builder.Property(p => p.Post);
         }
     }
 }

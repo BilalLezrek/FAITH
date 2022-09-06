@@ -13,20 +13,20 @@ namespace Services.ReactieService
         public ReactieService(FaithDbContext dbContext)
         {
             _dbContext = dbContext;
-            _posts = dbContext.Reactie;
+            _reacties = dbContext.Reactie;
         }
 
         private readonly FaithDbContext _dbContext;
-        private readonly DbSet<Reactie> _posts;
+        private readonly DbSet<Reactie> _reacties;
 
-        private IQueryable<Reactie> GetReactieById(int id) => _posts
+        private IQueryable<Reactie> GetReactieById(int id) => _reacties
                 .AsNoTracking()
                 .Where(p => p.Id == id);
 
         public async Task<ReactieResponse.Create> CreateAsync(ReactieRequest.Create request)
         {
             ReactieResponse.Create response = new();
-            var post = _posts.Add(new Reactie(
+            var post = _reacties.Add(new Reactie(
                 request.Reactie.Tekst,
                 request.Reactie.Gebruiker,
                 request.Reactie.Post
@@ -38,7 +38,7 @@ namespace Services.ReactieService
 
         public async Task DeleteAsync(ReactieRequest.Delete request)
         {
-            _posts.RemoveIf(p => p.Id == request.ReactieId);
+            _reacties.RemoveIf(p => p.Id == request.ReactieId);
             await _dbContext.SaveChangesAsync();
         }
 
@@ -66,7 +66,7 @@ namespace Services.ReactieService
         public async Task<ReactieResponse.GetIndex> GetIndexAsync(ReactieRequest.GetIndex request)
         {
             ReactieResponse.GetIndex response = new();
-            var query = _posts.AsQueryable().AsNoTracking();
+            var query = _reacties.AsQueryable().AsNoTracking();
 
             query.OrderBy(x => x.Datum);
             response.Posts = await query.Select(x => new ReactieDto.Index
@@ -75,6 +75,7 @@ namespace Services.ReactieService
                 Tekst = x.Tekst,
                 Datum = x.Datum,
                 Gebruiker = x.Gebruiker,
+                Post = x.Post
             }).ToListAsync();
             return response;
         }

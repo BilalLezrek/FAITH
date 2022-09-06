@@ -40,13 +40,13 @@ namespace Services.JongereService
                 FirstName = request.User.Voornaam,
                 LastName = request.User.Achternaam,
                 Password = request.User.Password,
-                Connection = "Jongerename-Password-Authentication"
+                Connection = "Jongere-Authentication"
             };
 
             var createdJongere = await _managementApiClient.Users.CreateAsync(auth0Request);
 
             var allRoles = await _managementApiClient.Roles.GetAllAsync(new GetRolesRequest());
-            var adminRole = allRoles.First(x => x.Name == "Administrator");
+            var adminRole = allRoles.First(x => x.Name == "Gebruiker");
 
             var assignRoleRequest = new AssignRolesRequest
             {

@@ -6,10 +6,14 @@
 <AuthorizeView>
     <Authorized>
         Hallo, @context.User.Identity.Name!
-        <a href="#" @onclick="BeginSignOut">Log out</a>
+        <MudButton OnClick="BeginSignOut">
+            <strong>Uitloggen</strong>
+        </MudButton>
     </Authorized>
     <NotAuthorized>
-        <a href="authentication/login">Log in</a>
+        <MudButton Href="authentication/login">
+            <strong>Inloggen</strong>
+        </MudButton>
     </NotAuthorized>
 </AuthorizeView>
 

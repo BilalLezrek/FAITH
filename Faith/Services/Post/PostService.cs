@@ -17,19 +17,21 @@ namespace Services.PostService
         }
 
         private readonly FaithDbContext _dbContext;
-        private readonly DbSet<Post> _posts;
+        private readonly DbSet<Domain.Posts.Post> _posts;
 
-        private IQueryable<Post> GetPostById(int id) => _posts
+        private IQueryable<Domain.Posts.Post> GetPostById(int id) => _posts
                 .AsNoTracking()
                 .Where(p => p.Id == id);
 
         public async Task<PostResponse.Create> CreateAsync(PostRequest.Create request)
         {
             PostResponse.Create response = new();
-            var post = _posts.Add(new Post(
+            var post = _posts.Add(new Domain.Posts.Post(
                 request.Post.Tekst,
                 request.Post.Onderwerp,
                 request.Post.Gebruiker,
+                request.Post.BegeleiderId,
+                request.Post.Archief,
                 request.Post.Url
             ));
             await _dbContext.SaveChangesAsync();
@@ -55,7 +57,7 @@ namespace Services.PostService
                 post.Tekst = model.Tekst;
                 post.Onderwerp = model.Onderwerp;
                 post.Gebruiker = model.Gebruiker;
-                post.PhotoUrl = model.Url;
+                post.Url = model.Url;
 
                 _dbContext.Entry(post).State = EntityState.Modified;
                 await _dbContext.SaveChangesAsync();
@@ -65,23 +67,23 @@ namespace Services.PostService
             return response;
         }
 
-        public async Task<PostResponse.GetIndex> GetIndexAsync(PostRequest.GetIndex request)
+        public async Task<PostResponse.GetIndex> GetIndexAsync(int begeleiderId)
         {
             PostResponse.GetIndex response = new();
             var query = _posts.AsQueryable().AsNoTracking();
 
-            if (!string.IsNullOrWhiteSpace(request.Onderwerp))
-                query = query.Where(x => x.Onderwerp.Contains(request.Onderwerp));
+            query = query.Where(x => x.Archief == false && x.BegeleiderId == begeleiderId );
 
             query.OrderBy(x => x.Datum);
             response.Posts = await query.Select(x => new PostDto.Index
             {
                 Id = x.Id,
-                Tekst = x.Tekst,
                 Onderwerp = x.Onderwerp,
-                Datum = x.Datum,
+                Tekst = x.Tekst,
                 Gebruiker = x.Gebruiker,
-                Url = x.PhotoUrl
+                BegeleiderId = x.BegeleiderId,
+                Archief = x.Archief,
+                Url = x.Url
             }).ToListAsync();
             return response;
         }

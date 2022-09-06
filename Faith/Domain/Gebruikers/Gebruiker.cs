@@ -1,11 +1,11 @@
 using Ardalis.GuardClauses;
+using Domain.Common;
 using Domain.Posts;
 
 namespace Domain.Gebruikers;
 
-public abstract class Gebruiker
+public abstract class Gebruiker:Entity
 {
-    public int Id { get; init; }
     public string Voornaam { get; set; }
     public string Achternaam { get; set; }
     public string Email { get; set; }

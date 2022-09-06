@@ -1,10 +1,5 @@
 ﻿using Bogus;
-using Domain.Posts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.Gebruikers;
 
 namespace Domain.Posts
 {
@@ -12,8 +7,8 @@ namespace Domain.Posts
     {
         public PostFaker()
         {
-            
-
+            CustomInstantiator(f => new Post(f.Lorem.Text(),f.Lorem.Word(),f.UniqueIndex,f.UniqueIndex,false,f.Image.PlaceholderUrl(3,5)));
+            RuleFor(x => x.Id, f => f.Random.Int());
         }
     }
 }

@@ -17,8 +17,10 @@ namespace Shared.Posts
                 public string Onderwerp { get; set; }
                 public string Tekst { get; set; }
                 public DateTime Datum { get; set; }
-                public Gebruiker Gebruiker { get; set; }
-                public string Url { get; set; }
+                public int Gebruiker { get; set; }
+                public int BegeleiderId { get; set; }
+                public bool Archief { get; set; }
+                public string? Url { get; set; }
             }
 
             public class Mutate
@@ -26,16 +28,21 @@ namespace Shared.Posts
                 public string Onderwerp { get; set; }
                 public string Tekst { get; set; }
                 public DateTime Datum { get; set; }
-                public Gebruiker Gebruiker { get; set; }
+                public int Gebruiker { get; set; }
+                public Boolean Archief { get; set; }
                 public string? Url { get; set; }
+            public int BegeleiderId { get; set; }
 
             public class Validator : AbstractValidator<Mutate>
             {
                 public Validator()
                 {
                     RuleFor(x => x.Tekst).NotEmpty().Length(1, 360);
+                    RuleFor(x => x.Onderwerp).NotEmpty().Length(1, 50);
                     RuleFor(x => x.Datum).NotEmpty();
                     RuleFor(x => x.Gebruiker).NotEmpty();
+                    RuleFor(x => x.Archief).NotEmpty();
+
                 }
             }
         }

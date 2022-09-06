@@ -24,9 +24,10 @@ namespace Shared.Posts
             public int PostId { get; set; }
             public string Onderwerp { get; set; }
             public string Tekst { get; set; }
-            public DateTime datum { get; set; }
-            public Gebruiker? gebruiker { get; set; }
-            public string url { get; set; }
+            public DateTime Datum { get; set; }
+            public Gebruiker Gebruiker { get; set; }
+            public bool Archied { get; set; }
+            public string Url { get; set; }
         }
 
         public class Edit

@@ -5,17 +5,17 @@ namespace Domain.Posts;
 
 public class Post : PostType
 {
-    public String Onderwerp { get; set; }
+    public string Onderwerp { get; set; }
+    public bool Archief { get; set; }
+    public int BegeleiderId { get; set; }
+    public string Url { get; set; }
 
-    public string PhotoUrl { get; set; }
-
-    public Post(string tekst, string onderwerp, Gebruiker gebruiker, string photoUrl) : base(gebruiker, tekst)
+    public Post(string tekst,string onderwerp, int gebruiker, int begeleiderId, bool archief,string url) : base(tekst,gebruiker)
     {
         Onderwerp = Guard.Against.Null(onderwerp, nameof(onderwerp));
-        Tekst = Guard.Against.Null(tekst, nameof(tekst));
-        PhotoUrl = Guard.Against.Null(photoUrl, nameof(photoUrl));
-        Gebruiker = Guard.Against.Null(gebruiker, nameof(gebruiker));
-        Datum = DateTime.Now;
+        Archief= Guard.Against.Null(archief, nameof(archief));
+        begeleiderId= Guard.Against.Null(begeleiderId, nameof(begeleiderId));
+        Url= url ?? string.Empty;
 
     }
 

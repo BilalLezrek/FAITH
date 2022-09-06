@@ -24,8 +24,8 @@ namespace Shared.Reactie
             public int PostId { get; set; }
             public string Tekst { get; set; }
             public DateTime datum { get; set; }
-            public Gebruiker gebruiker { get; set; }
-            public Post reactie { get; set; }
+            public int gebruiker { get; set; }
+            public int reactie { get; set; }
             public string? url { get; set; }
         }
 
